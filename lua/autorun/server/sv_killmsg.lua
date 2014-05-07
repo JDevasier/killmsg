@@ -5,7 +5,7 @@ if SERVER then
 		net.Start("killmessages")
 		net.WriteEntity(atk)
 		print(atk)
-		if IsValid(atk) then 
+		if IsValid(atk) && atk:IsPlayer() then 
 			net.WriteString(atk:GetRoleString())
 		else 
 			net.WriteString("world")
