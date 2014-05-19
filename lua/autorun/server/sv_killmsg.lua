@@ -2,10 +2,11 @@ if SERVER then
 	util.AddNetworkString("killmessages")
 	
 	hook.Add("PlayerDeath", "KillMessage", function(vic, inf, atk)
+		if !IsValid(atk) then return end 
 		net.Start("killmessages")
 		net.WriteEntity(atk)
 		print(atk)
-		if IsValid(atk) && atk:IsPlayer() then 
+		if atk:IsPlayer() then 
 			net.WriteString(atk:GetRoleString())
 		else 
 			net.WriteString("world")
